@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Lista de Carros Disponíveis</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:dataTable value="#{carListBean.carList}" var="car" paginator="true"
+			rows="10">
+			<p:column>
+				<f:facet name="header">Marca</f:facet>
+                    #{car.marca}
+                </p:column>
+			<p:column>
+				<f:facet name="header">Modelo</f:facet>
+                    #{car.modelo}
+                </p:column>
+			<p:column>
+				<f:facet name="header">Ano Fabricação</f:facet>
+                    #{car.anoFabricacao}
+                </p:column>
+			<p:column>
+				<f:facet name="header">Valor</f:facet>
+                    #{car.valor}
+                </p:column>
+			<p:column>
+				<p:button value="Detalhes" outcome="detalhe_carro.xhtml">
+					<f:param name="carId" value="#{car.id}" />
+				</p:button>
+			</p:column>
+			<p:column>
+				<p:button value="Tenho Interesse" outcome="interest.xhtml">
+					<f:param name="carId" value="#{car.id}" />
+				</p:button>
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+	<h:link value="Página Inicial" outcome="index.xhtml" />
+</h:body>
+</html>
